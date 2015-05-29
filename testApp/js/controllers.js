@@ -31,6 +31,7 @@ testapp.directive('tuanzi',function() {
 
             })
 			element.find('li').bind('click',function() {
+
                 scope.getindex=jQuery(this).index();
                 element.find('li').removeClass('selected').eq(scope.getindex).addClass('selected');
                 scope.$apply(function () {
