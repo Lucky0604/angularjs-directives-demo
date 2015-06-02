@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="testApp">
+<html lang="en" ng-app="testapp">
 <head>
 	<meta charset="UTF-8">
-	<title>testApp</title>
-	<style>
-		.all{width: 90%; margin: 0 auto;}
-		.all .tuanzi ul li{width:100%; float: left; height: 30px; line-height: 30px; background: #fff; border: 1px solid #333; cursor: pointer;}
-		.all .tuanzi ul li.selected{background: #999;}
+	<title>Document</title>
+	<style type="text/css">
+		.maincontant ul li{border: 1px solid #000; padding: 2%; cursor: pointer;}
+		.maincontant ul li.selected{background: #dedede;}
+		.maincontant ul li span{margin-right: 5%;}
+		
 	</style>
 	<script src="js/angular.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-	<script src="js/controllers.js"></script>
-
+    <script src="js/main.js"></script>
 </head>
-
-<body  ng-controller="MainCtrl">
-	<div class="all">
-        <label>填写默认值：</label><input type="text" ng-model="fruit">
+<body>
+	<div class="maincontant" ng-controller="maincontrol">
 		<p>团子喜欢吃：{{fruit}}</p>
-		<div id="tuanzi" class="tuanzi" select="fruit"></div>
-    </div>
+		<p><input placeholder="输入要过滤的字"></p>
+	    <p>
+			<select ng-change="change(x)" ng-model="x">
+				<option selected="selected" value="id">id</option>
+				<option value="name">name</option>
+				<option value="weight">weight</option>
+			</select>
+		</p>
+		<div class="tuanzi" select="fruit" fruits="fruitlist"></div>
+	</div>
+	
 </body>
 </html>
