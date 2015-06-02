@@ -15,14 +15,6 @@
 <body>
 	<div class="maincontant" ng-controller="maincontrol">
 		<p>团子喜欢吃：{{fruit}}</p>
-		<p><input placeholder="输入要过滤的字"></p>
-	    <p>
-			<select ng-change="change(x)" ng-model="x">
-				<option selected="selected" value="id">id</option>
-				<option value="name">name</option>
-				<option value="weight">weight</option>
-			</select>
-		</p>
 		<div class="tuanzi" select="fruit" fruits="fruitlist"></div>
 	</div>
 	

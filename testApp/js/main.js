@@ -14,14 +14,14 @@ testapp.controller('maincontrol',function ($scope) {
 		{id:5,name:'白菜',types:'蔬菜',weight:700}	
 	];
 	$scope.fruit='苹果';
-    $scope.change = function(x){
-
-    }
 });
 
 testapp.directive('tuanzi',function() {
 	var link =function($scope, $element, $attrs) {
-		console.log($scope.select);
+		$scope.newfilter="id";
+		$scope.change=function(x){
+			console.log(x);
+		}
 	   $scope.showli=function(getindex) {
 		 $element.find("li").removeClass('selected').eq(getindex).addClass('selected');
 		 $scope.select = $scope.fruits[getindex].name;
@@ -30,8 +30,14 @@ testapp.directive('tuanzi',function() {
 	return {
 		link: link,
 		restrict: 'C',
-		template:'<ul ng-init="tab=0">'+
-		'<li ng-click="showli($index)" ng-class="{ selected: tab === $index }"  ng-repeat="fruit in fruits">'+
+		template:'<p><input placeholder="输入要过滤的字" ng-model="searchText"></p>'+
+		'<p><select ng-change="change(x)" ng-model="x">'+
+		'<option selected="selected" value="id">id</option>'+
+		'<option value="name">name</option>'+
+		'<option value="weight">weight</option>' +
+		'</select></p>'+
+		'<ul ng-init="tab=0">'+
+		'<li ng-click="showli( $index )" ng-class="{ selected: tab === $index }"  ng-repeat="fruit in fruits | filter:searchText ">'+
 		'<span>id:{{fruit.id}}</span><span>name:{{fruit.name}}</span><span>types:{{fruit.types}}</span>'+
 		'<span>weight:{{fruit.weight}}</span>'+
 		'</li></ul>',
